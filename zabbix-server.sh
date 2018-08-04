@@ -49,3 +49,5 @@ sed -i -e 's/# php_value date.timezone Europe\/Riga/php_value date.timezone Asia
 systemctl restart httpd
 
 setsebool -P httpd_can_connect_zabbix on
+firewall-cmd --permanent --add-port=10050/tcp
+firewall-cmd --permanent --add-port=10051/tcp
