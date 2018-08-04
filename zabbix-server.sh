@@ -34,7 +34,7 @@ mysql -u root -ppassword -e "grant all privileges on zabbix.* to zabbix@localhos
 echo ""
 echo "Enter zabbix SQL password"
 echo ""
-zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql -uzabbix -pzabbix
+zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql -uzabbix -pzabbix zabbix
 
 sed -i -e 's/# DBHost=localhost/DBHost=localhost/g' /etc/zabbix/zabbix_server.conf
 
