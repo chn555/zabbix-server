@@ -46,5 +46,5 @@ yum install httpd -y
 systemctl enable httpd --now
 
 yum install zabbix-web-mysql -y
-sed -i -e 's/# php_value date.timezone Europe\/Riga/php_value date.timezone Asia\/Jerusalem/g' /etc/zabbix/zabbix_server.conf
+sed -i -e 's/# php_value date.timezone Europe\/Riga/php_value date.timezone Asia\/Jerusalem/g' /etc/httpd/conf.d/zabbix.conf 
 systemctl restart httpd
