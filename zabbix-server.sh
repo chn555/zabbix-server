@@ -2,7 +2,7 @@
 
 setenforce 0
 firewall-cmd --add-port=10051/tcp --permanent
-firewall-cmd --add-service=http --permanent
+firewall-cmd --add-port=80/tcp --permanent
 rpm -ivh https://repo.zabbix.com/zabbix/3.4/rhel/7/x86_64/zabbix-release-3.4-2.el7.noarch.rpm
 
 yum install yum-utils -y
@@ -44,7 +44,8 @@ systemctl enable zabbix-server --now
 
 yum install httpd -y
 systemctl enable httpd --now
-
 yum install zabbix-web-mysql -y
-sed -i -e 's/# php_value date.timezone Europe\/Riga/php_value date.timezone Asia\/Jerusalem/g' /etc/httpd/conf.d/zabbix.conf 
+sed -i -e 's/# php_value date.timezone Europe\/Riga/php_value date.timezone Asia\/Jerusalem/g' /etc/httpd/conf.d/zabbix.conf
 systemctl restart httpd
+
+setsebool -P httpd_can_connect_zabbix on
