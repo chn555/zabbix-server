@@ -27,4 +27,8 @@ mysql -u root -p -e "grant all privileges on zabbix.* to zabbix@localhost identi
 
 zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql -uzabbix -p zabbix
 
+sed -i -e 's/# DBHost=localhost/DBHost=localhost/g' /etc/zabbix/zabbix_server.conf
+
 sed -i -e 's/DBPassword=/DBPassword=zabbix/g' /etc/zabbix/zabbix_server.conf
+
+systemctl enable zabbix-server --now
