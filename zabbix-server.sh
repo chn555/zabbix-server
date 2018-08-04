@@ -9,6 +9,8 @@ yum install yum-utils -y
 
  yum install zabbix-server-mysql mariadb mariadb-server -y
 
+systemctl enable mariadb --now
+
  mysql_secure_installation <<EOF
 
  y
