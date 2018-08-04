@@ -5,22 +5,23 @@ rpm -ivh https://repo.zabbix.com/zabbix/3.4/rhel/7/x86_64/zabbix-release-3.4-2.e
 
 yum install yum-utils -y
 
- yum-config-manager --enable rhel-7-server-optional-rpms
+yum-config-manager --enable rhel-7-server-optional-rpms
 
- yum install zabbix-server-mysql mariadb mariadb-server -y
+yum install zabbix-server-mysql mariadb mariadb-server -y
 
 systemctl enable mariadb --now
 
- mysql_secure_installation <<EOF
+mysql_secure_installation <<_EOF_
 
- y
- password
- password
- y
- y
- y
- y
- EOF
+y
+password
+password
+y
+y
+y
+y
+_EOF_
+
 
 echo "Enter root SQL password"
 mysql -u root -p -e "create database zabbix character set utf8 collate utf8_bin;"
