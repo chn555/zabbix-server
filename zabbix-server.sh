@@ -28,13 +28,13 @@ _EOF_
 echo ""
 echo "Enter root SQL password"
 echo ""
-mysql -u root -p -e "create database zabbix character set utf8 collate utf8_bin;"
-mysql -u root -p -e "grant all privileges on zabbix.* to zabbix@localhost identified by 'zabbix';"
+mysql -u root -ppassword -e "create database zabbix character set utf8 collate utf8_bin;"
+mysql -u root -ppassword -e "grant all privileges on zabbix.* to zabbix@localhost identified by 'zabbix';"
 
 echo ""
 echo "Enter zabbix SQL password"
 echo ""
-zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql -uzabbix -p zabbix
+zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql -uzabbix -pzabbix
 
 sed -i -e 's/# DBHost=localhost/DBHost=localhost/g' /etc/zabbix/zabbix_server.conf
 
