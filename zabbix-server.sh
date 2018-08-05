@@ -1,5 +1,6 @@
 #!/bin/bash
 
+sed -i -e 's/SELINUX=enforcing/SELINUX=permissive/g' /etc/selinux/config
 setenforce 0
 firewall-cmd --add-port=10051/tcp --permanent
 firewall-cmd --add-port=80/tcp --permanent
